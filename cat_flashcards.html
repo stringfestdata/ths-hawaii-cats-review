@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cat Flashcards</title>
+<title>Hawaii Cats Flashcards 🌋🐾</title>
 <style>
   body {
     font-family: Arial, sans-serif;
@@ -13,11 +13,12 @@
     padding: 10px;
   }
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-top: 15px;
   }
   .card {
-    max-width: 95%;
+    width: 100%;
+    max-width: 500px;  /* Desktop cap */
     margin: 20px auto;
     padding: 15px;
     border: 2px solid #444;
@@ -51,7 +52,8 @@
     background-color: #0056b3;
   }
   @media (max-width: 480px) {
-    h1 { font-size: 1.2rem; }
+    h1 { font-size: 1.3rem; }
+    .card { min-height: 200px; }
     button {
       width: 90%;
       margin: 5px auto;
@@ -62,7 +64,7 @@
 </head>
 <body>
 
-<h1>Hawaii Cat Flashcards 🐾🌋</h1>
+<h1>Hawaii Cats Flashcards 🌋🐾</h1>
 <div id="card" class="card" onclick="flipCard()"></div>
 <div>
   <button onclick="prevCard()">Previous</button>
