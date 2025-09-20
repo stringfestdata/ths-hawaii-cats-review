@@ -18,7 +18,7 @@
   }
   .card {
     width: 100%;
-    max-width: 500px;  /* Desktop cap */
+    max-width: 500px;
     margin: 20px auto;
     padding: 15px;
     border: 2px solid #444;
@@ -38,26 +38,47 @@
     border-radius: 8px;
     margin-bottom: 15px;
   }
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
   button {
-    margin: 8px;
     padding: 12px 20px;
     font-size: 1rem;
     border: none;
     border-radius: 8px;
-    background-color: #007BFF;
-    color: white;
     cursor: pointer;
+    color: white;
   }
-  button:hover {
+  button.prev, button.flip, button.next {
+    background-color: #007BFF;
+  }
+  button.prev:hover, button.flip:hover, button.next:hover {
     background-color: #0056b3;
+  }
+  button.shuffle {
+    background-color: #28a745;
+  }
+  button.shuffle:hover {
+    background-color: #1e7e34;
   }
   @media (max-width: 480px) {
     h1 { font-size: 1.3rem; }
     .card { min-height: 200px; }
+    .nav-buttons {
+      flex-direction: column;
+      gap: 5px;
+    }
     button {
       width: 90%;
-      margin: 5px auto;
+      margin: 0 auto;
       display: block;
+    }
+    button.shuffle {
+      margin-top: 10px; /* extra space */
     }
   }
 </style>
@@ -66,11 +87,15 @@
 
 <h1>Hawaii Cats Flashcards 🌋🐾</h1>
 <div id="card" class="card" onclick="flipCard()"></div>
+
+<div class="nav-buttons">
+  <button class="prev" onclick="prevCard()">Previous</button>
+  <button class="flip" onclick="flipCard()">Flip</button>
+  <button class="next" onclick="nextCard()">Next</button>
+</div>
+
 <div>
-  <button onclick="prevCard()">Previous</button>
-  <button onclick="flipCard()">Flip</button>
-  <button onclick="nextCard()">Next</button>
-  <button onclick="shuffleDeck()">Shuffle</button>
+  <button class="shuffle" onclick="shuffleDeck()">Shuffle</button>
 </div>
 
 <script>
