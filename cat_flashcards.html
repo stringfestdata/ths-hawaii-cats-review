@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cat Flashcards</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; background: #fafafa; }
+  .card {
+    width: 400px; margin: 50px auto; padding: 20px;
+    border: 2px solid #444; border-radius: 12px; background: #fff;
+    cursor: pointer; min-height: 400px; display: flex;
+    align-items: center; justify-content: center; flex-direction: column;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+  }
+  img { max-width: 90%; max-height: 300px; border-radius: 8px; margin-bottom: 15px; }
+  button { margin: 10px; padding: 10px 20px; }
+</style>
+</head>
+<body>
+
+<h1>Cat Flashcards 🐾</h1>
+<div id="card" class="card" onclick="flipCard()"></div>
+<div>
+  <button onclick="prevCard()">Previous</button>
+  <button onclick="flipCard()">Flip</button>
+  <button onclick="nextCard()">Next</button>
+</div>
+
+<script>
+const flashcards = [
+  {
+    front: '<img src="cat_9_1.png"><div>Tap to flip</div>',
+    back: "<h3>Marshmallow (Marshie)</h3><p>Original cat, hisses at others, dramatic, likes eating in bathroom, cuddles only on her terms.</p>"
+  },
+  {
+    front: '<img src="cat_10_1.png"><div>Tap to flip</div>',
+    back: "<h3>Mango</h3><p>Survived FIP, food-obsessed, cuddly, snores, allergic to mushrooms & Lysine.</p>"
+  },
+  {
+    front: '<img src="cat_11_1.png"><div>Tap to flip</div>',
+    back: "<h3>Loki</h3><p>Mango’s best friend, obsessed with plastic, loft cat, hunts geckos.</p>"
+  },
+  {
+    front: '<img src="cat_12_1.png"><div>Tap to flip</div>',
+    back: "<h3>Truffle</h3><p>Ex-street cat, affectionate, wary of men, toy-trilling, allergic to Lysine, heart murmur.</p>"
+  },
+  {
+    front: '<img src="cat_13_1.png"><div>Tap to flip</div>',
+    back: "<h3>Kiwi</h3><p>Playful, barking noises, cuddly at night, sometimes bullies Marshie.</p>"
+  },
+  {
+    front: '<img src="cat_14_1.png"><div>Tap to flip</div>',
+    back: "<h3>Merlin</h3><p>Lap cat, velcro cat, purrs constantly, wakes you nibbling toes.</p>"
+  },
+  {
+    front: '<img src="cat_15_1.png"><div>Tap to flip</div>',
+    back: "<h3>Biscuit</h3><p>Orange rescue, bonded with Noodle, very vocal for food.</p>"
+  },
+  {
+    front: '<img src="cat_16_1.png"><div>Tap to flip</div>',
+    back: "<h3>Noodle</h3><p>Black rescue, oil burn survivor, high energy at dawn/dusk.</p>"
+  }
+];
+
+let current = 0;
+let showingFront = true;
+
+function renderCard() {
+  document.getElementById("card").innerHTML =
+    showingFront ? flashcards[current].front : flashcards[current].back;
+}
+
+function flipCard() {
+  showingFront = !showingFront;
+  renderCard();
+}
+
+function nextCard() {
+  current = (current + 1) % flashcards.length;
+  showingFront = true;
+  renderCard();
+}
+
+function prevCard() {
+  current = (current - 1 + flashcards.length) % flashcards.length;
+  showingFront = true;
+  renderCard();
+}
+
+renderCard();
+</script>
+</body>
+</html>
