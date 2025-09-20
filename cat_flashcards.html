@@ -18,7 +18,7 @@
   }
   .card {
     width: 100%;
-    max-width: 500px;
+    max-width: 500px;  /* Desktop cap */
     margin: 20px auto;
     padding: 15px;
     border: 2px solid #444;
@@ -43,7 +43,6 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 12px;
   }
   button {
     padding: 12px 20px;
@@ -52,18 +51,10 @@
     border-radius: 8px;
     cursor: pointer;
     color: white;
-  }
-  button.prev, button.flip, button.next {
     background-color: #007BFF;
   }
-  button.prev:hover, button.flip:hover, button.next:hover {
+  button:hover {
     background-color: #0056b3;
-  }
-  button.shuffle {
-    background-color: #28a745;
-  }
-  button.shuffle:hover {
-    background-color: #1e7e34;
   }
   @media (max-width: 480px) {
     h1 { font-size: 1.3rem; }
@@ -77,9 +68,6 @@
       margin: 0 auto;
       display: block;
     }
-    button.shuffle {
-      margin-top: 10px; /* extra space */
-    }
   }
 </style>
 </head>
@@ -89,13 +77,9 @@
 <div id="card" class="card" onclick="flipCard()"></div>
 
 <div class="nav-buttons">
-  <button class="prev" onclick="prevCard()">Previous</button>
-  <button class="flip" onclick="flipCard()">Flip</button>
-  <button class="next" onclick="nextCard()">Next</button>
-</div>
-
-<div>
-  <button class="shuffle" onclick="shuffleDeck()">Shuffle</button>
+  <button onclick="prevCard()">Previous</button>
+  <button onclick="flipCard()">Flip</button>
+  <button onclick="nextCard()">Next</button>
 </div>
 
 <script>
@@ -145,7 +129,7 @@ function shuffle(array) {
   }
 }
 
-// Shuffle at start
+// Shuffle deck at load
 shuffle(flashcards);
 
 function renderCard() {
@@ -166,13 +150,6 @@ function nextCard() {
 
 function prevCard() {
   current = (current - 1 + flashcards.length) % flashcards.length;
-  showingFront = true;
-  renderCard();
-}
-
-function shuffleDeck() {
-  shuffle(flashcards);
-  current = 0;
   showingFront = true;
   renderCard();
 }
